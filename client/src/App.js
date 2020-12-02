@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { AppBar, Typography,Container, Grid, Grow } from '@material-ui/core'
+import { Container, Grid, Grow } from '@material-ui/core'
 import Navbar from './components/Navbar/Navbar'
 import Events from './components/Events/Events'
 import Form from './components/Form/Form'
