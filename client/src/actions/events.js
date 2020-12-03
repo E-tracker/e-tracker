@@ -2,7 +2,7 @@ import { CREATE,DELETE,FETCH_ALL,UPDATE } from '../constants/actionTypes'
 import * as api from '../api'
 
 // action creators
-export const getEvent = () => async(dispatch) => {
+export const getEvents = () => async(dispatch) => {
     try {
         const { data } = await api.fetchEvent()
         const action = { type:FETCH_ALL, payload:data }
