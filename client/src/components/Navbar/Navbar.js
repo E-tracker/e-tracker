@@ -17,7 +17,7 @@ const Navbar = () => {
                         <MenuIcon />
                     </IconButton>
                     <div className={classes.grow}></div>
-                    <Typography variant="h4" className={classes.title} color="inherit">
+                    <Typography variant="h5" className={classes.title} color="inherit">
                         <img src={logo} height="50px" alt="logo" className={classes.image}/>
                         -Tracker
                     </Typography>
