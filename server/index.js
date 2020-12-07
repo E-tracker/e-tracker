@@ -23,8 +23,8 @@ const CONNECTION_URL = 'mongodb+srv://dipzzz234:OZQmjwygs0wMUv9y@cluster0.zzavh.
 
 
 mongoose.connect(CONNECTION_URL,{ useNewUrlParser:true, useUnifiedTopology:true })
-    .then(()=>app.listen(PORT,()=>console.log(`server running on port ${PORT}`)))
-    .catch((err)=>console.log(err))
+    .then(()=>app.listen(PORT,()=>console.log(`Database connected`)))
+    .catch((err)=>console.log(err)) 
 
 mongoose.set('useFindAndModify',false)
  

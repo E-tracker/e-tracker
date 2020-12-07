@@ -12,8 +12,8 @@ const DateInput = ({eventData,setEventData}) => {
             margin="normal"
             id="date-picker-inline"
             label="Date picker inline"
-            value={eventData.eventTime}
-            onChange={(e)=>setEventData({...eventData,eventTime:new Date(e)})}
+            value={eventData.eventDate}
+            onChange={(e)=>setEventData({...eventData,eventDate:new Date(e)})}
             KeyboardButtonProps={{
                 'aria-label': 'change date',
             }}

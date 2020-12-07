@@ -36,6 +36,7 @@ const Event = ({ event,setCurrentId }) => {
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">{event.description}</Typography>
             </CardContent>
+            <Typography className={classes.title} gutterBottom variant="h5" component="h2">{event.eventDate}</Typography>
             <CardActions className={classes.cardActions}>
                 <Button size="small" color="primary" onClick={()=>dispatch(likeEvent(event._id))} >
                     <ThumbUpAltIcon fontSize="small" />
