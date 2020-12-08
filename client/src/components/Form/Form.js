@@ -35,7 +35,7 @@ const Form = ({ currentId,setCurrentId }) => {
                 <TextField className={classes.fileInput} name="title" variant="outlined" label="Title"  value={eventData.title} onChange={(e)=>setEventData({...eventData,title:e.target.value})} />
                 <TextField className={classes.fileInput} name="host" variant="outlined" label="Host" value={eventData.host} onChange={(e)=>setEventData({...eventData,host:e.target.value})} />
                 <TextField className={classes.fileInput} name="description" variant="outlined" label="Description" value={eventData.description} onChange={(e)=>setEventData({...eventData,description:e.target.value})} />
-                <TextField className={classes.fileInput} name="tags" variant="outlined" label="Tags" value={eventData.tags} onChange={(e)=>setEventData({...eventData,tags:e.target.value.split(' ')})} />
+                <TextField className={classes.fileInput} name="tags" variant="outlined" label="Tags" value={eventData.tags} onChange={(e)=>setEventData({...eventData,tags:e.target.value.split(',')})} />
                 <DateInput className={classes.fileInput} eventData={eventData} setEventData={setEventData}/>
                 <TimeInput className={classes.fileInput} eventData={eventData} setEventData={setEventData}/>
                 <div className={classes.fileInput}>

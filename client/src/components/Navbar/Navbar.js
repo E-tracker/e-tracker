@@ -11,7 +11,7 @@ const Navbar = () => {
     const classes = useStyles()
     return (
         <>
-            <AppBar position="fixed" className={classes.appBar} color="inherit">
+            
                 <Toolbar>
                     <IconButton color="inherit">
                         <MenuIcon />
@@ -37,7 +37,6 @@ const Navbar = () => {
                         </IconButton>
                     </div>
                 </Toolbar>
-            </AppBar>
         </>
     )
 }

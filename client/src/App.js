@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 
-import { Container, Grid, Grow } from '@material-ui/core'
+import { Container, Grid, Grow,AppBar } from '@material-ui/core'
 
 import {useDispatch} from 'react-redux'
 import {getEvents} from './actions/events'
@@ -22,7 +22,10 @@ function App() {
   },currentId)
   return (
     <Container maxWidth="lg">
-        <Navbar />
+        <AppBar position="fixed" className={classes.appBar} color="inherit">
+          <Navbar />
+        </AppBar>
+        <Grid container className={classes.empty}></Grid>
         <Grow in>
             <Container>
                 <Grid className={classes.mainContainer} container justify="space-between" alignItems="center" spacing={3}>

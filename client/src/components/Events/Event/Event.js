@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Card, CardMedia, Typography, Button, CardContent, CardActions } from '@material-ui/core'
-
+import CountDown from './CountDown/CountDown'
 // Icons
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -36,7 +36,7 @@ const Event = ({ event,setCurrentId }) => {
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">{event.description}</Typography>
             </CardContent>
-            <Typography className={classes.title} gutterBottom variant="h5" component="h2">{event.eventDate}</Typography>
+            <CountDown event={event}/>
             <CardActions className={classes.cardActions}>
                 <Button size="small" color="primary" onClick={()=>dispatch(likeEvent(event._id))} >
                     <ThumbUpAltIcon fontSize="small" />
