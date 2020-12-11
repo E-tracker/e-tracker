@@ -8,7 +8,7 @@ const TimeInput = ({eventData,setEventData}) => {
             <KeyboardTimePicker
                 margin="normal"
                 id="time-picker"
-                label="Time picker"
+                label="Event Time"
                 value={eventData.eventTime}
                 onChange={(e)=>setEventData({...eventData,eventTime:new Date(e)})}
                 KeyboardButtonProps={{

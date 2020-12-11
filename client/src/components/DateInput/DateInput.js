@@ -11,7 +11,7 @@ const DateInput = ({eventData,setEventData}) => {
             format="MM/dd/yyyy"
             margin="normal"
             id="date-picker-inline"
-            label="Date picker inline"
+            label="Event Date"
             value={eventData.eventDate}
             onChange={(e)=>setEventData({...eventData,eventDate:new Date(e)})}
             KeyboardButtonProps={{

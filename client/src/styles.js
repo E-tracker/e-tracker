@@ -13,7 +13,7 @@ export default makeStyles((theme)=>({
         },
     },
     empty:{
-        padding:'60px'
+        padding:'38px'
     },
    heading:{}, 
    image:{
