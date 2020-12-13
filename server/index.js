@@ -6,6 +6,9 @@ import dotenv from 'dotenv'
 
 import passportInitializer from './config/passport.js'
 import passport from 'passport'
+import session from 'express-session'
+import connectMongo from 'connect-mongo'
+const MongoStore = connectMongo(session)
 
 import indexRoute from './routes/index.js'
 import authRoute from './routes/auth.js'
@@ -21,6 +24,14 @@ const app = express()
 app.use(bodyParser.json({ limit:"30mb",extended:true }))
 app.use(bodyParser.urlencoded({ limit:"30mb",extended:true }))
 app.use(cors())
+
+// session middleware
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+}))
 
 // Passport middleware
 app.use(passport.initialize())

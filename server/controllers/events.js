@@ -13,6 +13,7 @@ export const getEvent = async (req,res) => {
 
 
 export const createEvent = async (req,res)=>{
+    req.body.user = req.body.id
     const event = req.body
     const newEvent = new eventModel(event)
 

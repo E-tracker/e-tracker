@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import User from './User.js'
 
 const eventSchema = mongoose.Schema({
     title:String,
@@ -6,6 +7,10 @@ const eventSchema = mongoose.Schema({
     host:String,
     tags: [String],
     selectedFile:String,
+    user:{
+        type: mongoose.Types.ObjectId,
+        ref:User
+    },
     likeCount:{
         type:Number,
         default:0
