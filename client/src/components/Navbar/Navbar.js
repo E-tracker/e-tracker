@@ -1,14 +1,18 @@
 
-import { AppBar, Badge, IconButton,InputBase,Toolbar, Typography } from '@material-ui/core'
+import { Button, IconButton,InputBase,Toolbar, Typography } from '@material-ui/core'
 import Logout from '@material-ui/icons/ExitToApp'
 import SearchIcon from '@material-ui/icons/Search'
 import MenuIcon from '@material-ui/icons/Menu'
 import logo from '../../assets/e-tracker-logo.jpg'
 import useStyles from './styles'
 
+import Login from './Login'
+
 
 const Navbar = () => {
+
     const classes = useStyles()
+
     return (
         <>
             
@@ -29,13 +33,9 @@ const Navbar = () => {
                             placeholder="Search an event"
                         />
                     </div>
-                    <div className={classes.button}>
-                        <IconButton aria-label="Log out from E-tracker" color="inherit">
-                            <Badge badgeContent={2} color="secondary">
-                                <Logout />
-                            </Badge>
-                        </IconButton>
-                    </div>
+                    
+                    <Login />        
+                    
                 </Toolbar>
         </>
     )

@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { Grid, Paper, Typography } from '@material-ui/core'
+import { Grid, Paper } from '@material-ui/core'
 
 import useStyles from './styles'
 
