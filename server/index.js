@@ -4,17 +4,13 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
-import passportInitializer from './config/passport.js'
-import passport from 'passport'
 
 import indexRoute from './routes/index.js'
-import authRoute from './routes/auth.js'
+
 import eventRoutes from './routes/events.js'
 
 
 dotenv.config({ path: './config/config.env' })
-
-passportInitializer(passport)
 
 const app = express()
 
@@ -22,9 +18,7 @@ app.use(bodyParser.json({ limit:"30mb",extended:true }))
 app.use(bodyParser.urlencoded({ limit:"30mb",extended:true }))
 app.use(cors())
 
-// Passport middleware
-app.use(passport.initialize())
-app.use(passport.session())
+
 
 // set global variable
 app.use(function(req,res,next){
@@ -34,7 +28,6 @@ app.use(function(req,res,next){
 
 
 app.use('/',indexRoute)
-app.use('/auth',authRoute)
 app.use('/events',eventRoutes)
 
 const PORT = process.env.PORT

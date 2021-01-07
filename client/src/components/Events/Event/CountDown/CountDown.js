@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { Grid, Paper } from '@material-ui/core'
+import { Grid, Paper, Typography } from '@material-ui/core'
 
 import useStyles from './styles'
 
@@ -57,19 +57,24 @@ const CountDown = ({event}) => {
 
     return(
         <Grid container className={classes.root} spacing={2}>
+            <Typography variant="h6" color="secondary" component="p">Event will end in...</Typography>
             <Grid item xs={12}>
                 <Grid container spacing={3}>
                     <Grid item>
                         <Paper className={classes.paper}>{timeLeft.days}</Paper>
+                        <Typography variant="body2" color="textSecondary" component="p">Days</Typography>
                     </Grid>
                     <Grid item>
                         <Paper className={classes.paper}>{timeLeft.hours}</Paper>
+                        <Typography variant="body2" component="p">Hours</Typography>
                     </Grid>
                     <Grid item>
                         <Paper className={classes.paper}>{timeLeft.minutes}</Paper>
+                        <Typography variant="body2" color="textSecondary" component="p">Mins</Typography>
                     </Grid>
                     <Grid item>
                         <Paper className={classes.paper}>{timeLeft.seconds}</Paper>
+                        <Typography variant="body2" component="p">Secs</Typography>
                     </Grid>
                 </Grid>
             </Grid>
