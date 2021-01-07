@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 const eventSchema = mongoose.Schema({
     title:String,
     description:String,
+    link:String,
     host:String,
     tags: [String],
     selectedFile:String,
