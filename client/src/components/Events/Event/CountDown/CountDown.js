@@ -57,7 +57,7 @@ const CountDown = ({event}) => {
 
     return(
         <Grid container className={classes.root} spacing={2}>
-            <Typography variant="h6" color="secondary" component="p">Event will end in...</Typography>
+            <Typography variant="h6" color="secondary" component="p">Event will start in...</Typography>
             <Grid item xs={12}>
                 <Grid container spacing={3}>
                     <Grid item>

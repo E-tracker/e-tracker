@@ -10,7 +10,7 @@ const Login = () => {
     const [user,setUser] = useState('')
 
     const onSuccessGoogle = (response) => {
-        let username = response.wt.Ad
+        let username = response.Mt.Ed
         setUser(username)
         setIsloggedIn(true)
     }

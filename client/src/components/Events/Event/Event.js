@@ -42,7 +42,7 @@ const Event = ({ event,setCurrentId }) => {
                     &nbsp;Like&nbsp;{event.likeCount}
                 </Button>
                 <Button variant="contained">
-                    <Link href={event.link} color="default">visit</Link>
+                    <Link href={event.link} color="default">JOIN</Link>
                 </Button>
                 <Button size="small" color="primary" onClick={()=>dispatch(deleteEvent(event._id))} >
                     <DeleteIcon fontSize="small"/>

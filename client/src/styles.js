@@ -13,15 +13,27 @@ export default makeStyles((theme)=>({
         },
     },
     empty:{
-        padding:'38px'
+        padding:'90px'
     },
-   heading:{}, 
-   image:{
-        marginLeft:'15px'
-   },
-   [theme.breakpoints.down("sm")]:{
-       mainContainer:{
-           flexDirection:'column-reverse'
-       }
-   } 
+    heading:{}, 
+    image:{
+         marginLeft:'15px'
+    },
+    [theme.breakpoints.down("sm")]:{
+        mainContainer:{
+            flexDirection:'column-reverse'
+        }
+    },
+    root:{
+        maxHeight:400,
+        maxWidth:380
+    },
+    media:{
+        height:230
+    },
+    button:{
+        marginLeft:'auto',
+        marginRight:'auto',
+        width:''
+    } 
 }))
