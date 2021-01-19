@@ -1,43 +1,48 @@
-
-import { Button, IconButton,InputBase,Toolbar, Typography } from '@material-ui/core'
-import Logout from '@material-ui/icons/ExitToApp'
+import React,{ useState,useEffect } from "react"
+import { AppBar, Typography,InputBase, Toolbar, Avatar, Button } from '@material-ui/core';
+import { useHistory,useLocation,Link } from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search'
-import MenuIcon from '@material-ui/icons/Menu'
+
 import logo from '../../assets/e-tracker-logo.jpg'
 import useStyles from './styles'
-
-import Login from './Login'
 
 
 const Navbar = () => {
 
+    const user= null
+
     const classes = useStyles()
 
+    const logout = () => {}
+
     return (
-        <>
-            
-                <Toolbar>
-                    <IconButton color="inherit">
-                        <MenuIcon />
-                    </IconButton>
-                    <div className={classes.grow}></div>
-                    <Typography variant="h5" className={classes.title} color="inherit">
-                        <img src={logo} height="50px" alt="logo" className={classes.image}/>
-                        -Tracker
-                    </Typography>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon/>
-                        </div>
-                        <InputBase 
-                            placeholder="Search an event"
-                        />
+
+        <AppBar className={classes.appBar} position="static" color="inherit">
+            <div className={classes.brandContainer}>
+                <img className={classes.image} src={logo} alt="icon" height="60" />
+                <Typography component={Link} to="/" className={classes.heading} variant="h4" align="center">E-tracker</Typography>
+            </div>
+            {/* <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                    <SearchIcon/>
+                </div>
+                <InputBase 
+                    placeholder="Search an event"
+                />
+            </div> */}
+            <Toolbar className={classes.toolbar}>
+                {user?.result ? (
+                    <div className={classes.profile}>
+                        <Avatar className={classes.purple} alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
+                        <Typography className={classes.userName} variant="h6">{user?.result.name}</Typography>
+                        <Button variant="contained" color="secondary" className={classes.logout} onClick={logout}>Logout</Button>
                     </div>
-                    
-                    <Login />        
-                    
-                </Toolbar>
-        </>
+                ) : (
+                    <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
+                )}
+            </Toolbar>
+        </AppBar>
+            
     )
 }
 
