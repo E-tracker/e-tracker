@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import GoogleLogin from 'react-google-login'
 import { Avatar,Button,Container, Grid, Paper, Typography } from "@material-ui/core";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import {useDispatch} from 'react-redux'
 
 import Input from './Input'
 import Icon from './Icon'
@@ -14,6 +15,8 @@ const Auth = () => {
     
     const [showPassword,setShowPassword] = useState(false)
     const handleShowPassword = () => setShowPassword(!showPassword)
+
+    const dispatch = useDispatch()
 
     const switchMode =() => {
         setIsSignup((prevIsSignup)=>!isSignup)
@@ -32,7 +35,7 @@ const Auth = () => {
         const token = await response ?. tokenId
 
         try {
-            
+           dispatch({ type:'AUTH',data:{ result,token } }) 
         } catch (error) {
             console.log(error)
         }
