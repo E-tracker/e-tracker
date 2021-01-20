@@ -10,8 +10,11 @@ import Icon from './Icon'
 
 import useStyles from './styles'
 
+const initialFormData = { firstName:'',lastName:'',email:'',password:'',confirmPassword:'' }
+
 const Auth = () => {
     const [isSignup,setIsSignup] = useState(false)
+    const [formData,setFormData] = useState(initialFormData)
     const history = useHistory()
     const classes = useStyles()
     
@@ -25,11 +28,12 @@ const Auth = () => {
         setShowPassword(false)
     }
 
-    const handleSubmit = () => {
-
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(formData);
     }
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        setFormData({...formData,[e.target.name]:e.target.value})
     }
 
     const googleSuccess = async(response) => {
