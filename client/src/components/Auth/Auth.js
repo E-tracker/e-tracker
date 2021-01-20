@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import GoogleLogin from 'react-google-login'
 import { Avatar,Button,Container, Grid, Paper, Typography } from "@material-ui/core";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -11,6 +12,7 @@ import useStyles from './styles'
 
 const Auth = () => {
     const [isSignup,setIsSignup] = useState(false)
+    const history = useHistory()
     const classes = useStyles()
     
     const [showPassword,setShowPassword] = useState(false)
@@ -35,7 +37,8 @@ const Auth = () => {
         const token = await response ?. tokenId
 
         try {
-           dispatch({ type:'AUTH',data:{ result,token } }) 
+           dispatch({ type:'AUTH',data:{ result,token } })
+           history.push('/') 
         } catch (error) {
             console.log(error)
         }

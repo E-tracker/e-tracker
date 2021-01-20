@@ -1,19 +1,32 @@
 import React,{ useState,useEffect } from "react"
-import { AppBar, Typography,InputBase, Toolbar, Avatar, Button } from '@material-ui/core';
+import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
 import { useHistory,useLocation,Link } from 'react-router-dom'
-import SearchIcon from '@material-ui/icons/Search'
+import {useDispatch} from 'react-redux'
 
 import logo from '../../assets/e-tracker-logo.jpg'
 import useStyles from './styles'
 
 
 const Navbar = () => {
+    const dispatch = useDispatch()
+    const location = useLocation()
+    const history = useHistory()
 
-    const user= null
+    const [user,setUser] = useState(JSON.parse(localStorage.getItem('profile')))
 
     const classes = useStyles()
 
-    const logout = () => {}
+    const logout = () => {
+        dispatch({ type:'LOGOUT' })
+        history.push('/')
+        setUser(null)
+    }
+
+    useEffect(()=>{
+        const token = user?.token
+
+        setUser(JSON.parse(localStorage.getItem('profile')))
+    },[location])
 
     return (
 
