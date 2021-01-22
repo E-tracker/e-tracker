@@ -6,7 +6,7 @@ import dotenv from 'dotenv'
 
 
 import eventRoutes from './routes/events.js'
-
+import userRoutes from './routes/users.js'
 
 dotenv.config({ path: './config/config.env' })
 
@@ -25,6 +25,7 @@ app.use(function(req,res,next){
 })
 
 app.use('/events',eventRoutes)
+app.use('/user',userRoutes)
 
 const PORT = process.env.PORT
 const CONNECTION_URL = process.env.CONNECTION_URL
