@@ -1,5 +1,5 @@
 import React,{ useState,useEffect } from "react"
-import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
+import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core'
 import { useHistory,useLocation,Link } from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 
@@ -35,14 +35,6 @@ const Navbar = () => {
                 <img className={classes.image} src={logo} alt="icon" height="60" />
                 <Typography component={Link} to="/" className={classes.heading} variant="h4" align="center">E-tracker</Typography>
             </div>
-            {/* <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                    <SearchIcon/>
-                </div>
-                <InputBase 
-                    placeholder="Search an event"
-                />
-            </div> */}
             <Toolbar className={classes.toolbar}>
                 {user?.result ? (
                     <div className={classes.profile}>

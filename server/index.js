@@ -5,8 +5,6 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
 
-import indexRoute from './routes/index.js'
-
 import eventRoutes from './routes/events.js'
 
 
@@ -26,8 +24,6 @@ app.use(function(req,res,next){
     next()
 })
 
-
-app.use('/',indexRoute)
 app.use('/events',eventRoutes)
 
 const PORT = process.env.PORT

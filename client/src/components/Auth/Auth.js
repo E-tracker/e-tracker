@@ -5,6 +5,8 @@ import { Avatar,Button,Container, Grid, Paper, Typography } from "@material-ui/c
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {useDispatch} from 'react-redux'
 
+import { signIn,signUp } from "../../actions/auth";
+
 import Input from './Input'
 import Icon from './Icon'
 
@@ -30,7 +32,11 @@ const Auth = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(formData);
+        if(isSignup){
+            dispatch(signUp(formData,history))
+        }else{
+            dispatch(signIn(formData,history))
+        }
     }
     const handleChange = (e) => {
         setFormData({...formData,[e.target.name]:e.target.value})
