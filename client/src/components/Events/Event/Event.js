@@ -39,11 +39,13 @@ const Event = ({ event,setCurrentId }) => {
                 <Typography variant="h6">{event.host}</Typography>
                 <Typography variant="body2">{moment(event.createdAt).fromNow()}</Typography>
             </div>
-            <div className={classes.overlay2}>
-                <Button style={{color:'white'}} size="small" onClick={()=>setCurrentId(event._id)}>
-                    <MoreHorizIcon fontSize="default"/>
-                </Button>
-            </div>
+            {(user?.result?.googleId === event?.creator || user?.result?._id === event?.creator) && (
+                <div className={classes.overlay2}>
+                    <Button style={{color:'white'}} size="small" onClick={()=>setCurrentId(event._id)}>
+                        <MoreHorizIcon fontSize="default"/>
+                    </Button>
+                </div>
+            )}
             <div className={classes.details}>
                 <Typography variant="body2" color="textSecondary" component="h2">{event.tags.map((tag)=>`-${tag} `)}</Typography>
             </div>
@@ -59,10 +61,12 @@ const Event = ({ event,setCurrentId }) => {
                 <Button variant="contained">
                     <Link href={event.link} color="default">JOIN</Link>
                 </Button>
-                <Button size="small" color="primary" onClick={()=>dispatch(deleteEvent(event._id))} >
-                    <DeleteIcon fontSize="small"/>
-                    Delete
-                </Button>
+                {(user?.result?.googleId === event?.creator || user?.result?._id === event?.creator) && (
+                    <Button size="small" color="primary" onClick={()=>dispatch(deleteEvent(event._id))} >
+                        <DeleteIcon fontSize="small"/>
+                        Delete
+                    </Button>
+                )}
             </CardActions>
         </Card>
     )

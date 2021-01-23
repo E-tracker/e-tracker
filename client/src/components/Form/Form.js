@@ -18,6 +18,9 @@ const Form = ({ currentId,setCurrentId }) => {
         if(event) setEventData(event)
     },[event])
 
+    useEffect(()=>{
+    },[user])
+
     const clear =()=>{
         setCurrentId(null)
         setEventData({title:'',description:'',link:'',host:'',tags:'',selectedFile:'',eventDate:new Date(),eventTime:new Date()})
@@ -28,21 +31,20 @@ const Form = ({ currentId,setCurrentId }) => {
         if(currentId){
             dispatch(updateEvent(currentId,eventData))
         }else{
-            console.log(user?.result?.creator);
             dispatch(createEvent({...eventData,creator: user?.result?.creator}))
         }
         clear()
     }
 
-    // if(!user?.result?.creator) {
-    //     return (
-    //         <Paper>
-    //             <Typography variant="h6" align="center">
-    //                 Please sign In to Create or Like an Event
-    //             </Typography>
-    //         </Paper>
-    //     )
-    // }
+    if(!user?.result?.name) {
+        return (
+            <Paper>
+                <Typography variant="h6" align="center">
+                    Sign In to Create or Like an Event
+                </Typography>
+            </Paper>
+        )
+    }
 
     return (
         <Paper className={classes.paper}>

@@ -27,7 +27,7 @@ app.use(function(req,res,next){
 app.use('/events',eventRoutes)
 app.use('/users',userRoutes) 
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT 
 const CONNECTION_URL = process.env.CONNECTION_URL
 
 
