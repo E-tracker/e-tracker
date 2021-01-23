@@ -14,7 +14,7 @@ export const getEvent = async (req,res) => {
 
 export const createEvent = async (req,res)=>{
     const event = req.body
-    const newEvent = new eventModel(event)
+    const newEvent = new eventModel({...event,creator:req.userId})
 
     try {
         await newEvent.save()
@@ -50,11 +50,25 @@ export const deleteEvent = async (req,res) => {
 
 export const likeEvent = async (req,res) => {
     const { id } = req.params
+
+    if(!req.userId){
+        return res.json({ message:"Unauthenticated" })
+    }
+
     if(!mongoose.Types.ObjectId.isValid(id))
-        return res.status(404).send("No event with that id")
+        return res.status(404).send(`No event with that id:${id}`)
 
     const event = await eventModel.findById(id)
-    const updatedEvent = await eventModel.findByIdAndUpdate(id,{ likeCount : event.likeCount + 1 },{ new:true })
 
-    res.json(updatedEvent)
+    const index = event.likeCount.findIndex((id)=> id===String(req.userId))
+
+    if(index === -1){
+        event.likeCount.push(req.userId)
+    }else{
+        event.likeCount = event.likeCount.filter((id)=> id !==String(req.userId))
+    }
+
+    const updatedEvent = await eventModel.findByIdAndUpdate(id,event,{ new:true })
+
+    res.status(200).json(updatedEvent)
 }

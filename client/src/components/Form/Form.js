@@ -12,22 +12,38 @@ const Form = ({ currentId,setCurrentId }) => {
     const event = useSelector((state)=> currentId ? state.events.find((p)=>p._id === currentId):null)
     const classes = useStyles()
     const dispatch = useDispatch()
+    const user = JSON.parse(localStorage.getItem('profile'))
+
     useEffect(()=>{
         if(event) setEventData(event)
     },[event])
+
+    const clear =()=>{
+        setCurrentId(null)
+        setEventData({title:'',description:'',link:'',host:'',tags:'',selectedFile:'',eventDate:new Date(),eventTime:new Date()})
+    }
+
     const handleSubmit = async(e)=>{
         e.preventDefault()
         if(currentId){
             dispatch(updateEvent(currentId,eventData))
         }else{
-            dispatch(createEvent(eventData))
+            console.log(user?.result?.creator);
+            dispatch(createEvent({...eventData,creator: user?.result?.creator}))
         }
         clear()
     }
-    const clear =()=>{
-        setCurrentId(null)
-        setEventData({title:'',description:'',link:'',host:'',tags:'',selectedFile:'',eventDate:new Date(),eventTime:new Date()})
-    }
+
+    // if(!user?.result?.creator) {
+    //     return (
+    //         <Paper>
+    //             <Typography variant="h6" align="center">
+    //                 Please sign In to Create or Like an Event
+    //             </Typography>
+    //         </Paper>
+    //     )
+    // }
+
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>

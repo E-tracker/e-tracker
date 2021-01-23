@@ -3,6 +3,7 @@ import { Link, Card, CardMedia, Typography, Button, CardContent, CardActions } f
 import CountDown from './CountDown/CountDown'
 // Icons
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
@@ -16,6 +17,21 @@ import { deleteEvent, likeEvent } from '../../../actions/events';
 const Event = ({ event,setCurrentId }) => {
     const classes = useStyles()
     const dispatch = useDispatch()
+    const user = JSON.parse(localStorage.getItem('profile'))
+
+    const Likes = () => {
+        if (event.likeCount.length > 0) {
+          return event.likeCount.find((like) => like === (user?.result?.googleId || user?.result?._id))
+            ? (
+              <><ThumbUpAltIcon fontSize="small" />&nbsp;{event.likeCount.length > 2 ? `You and ${event.likeCount.length - 1} others` : `${event.likeCount.length} like${event.likeCount.length > 1 ? 's' : ''}` }</>
+            ) : (
+              <><ThumbUpAltOutlined fontSize="small" />&nbsp;{event.likeCount.length} {event.likeCount.length === 1 ? 'Like' : 'Likes'}</>
+            );
+        }
+    
+        return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
+    };
+
     return (
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={event.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} title={event.title}></CardMedia>
@@ -37,9 +53,8 @@ const Event = ({ event,setCurrentId }) => {
             </CardContent>
             <CountDown event={event}/>
             <CardActions className={classes.cardActions}>
-                <Button size="small" color="primary" onClick={()=>dispatch(likeEvent(event._id))} >
-                    <ThumbUpAltIcon fontSize="small" />
-                    &nbsp;Like&nbsp;{event.likeCount}
+                <Button size="small" color="primary" disabled={!user?.result} onClick={() => dispatch(likeEvent(event._id))}>
+                    <Likes />
                 </Button>
                 <Button variant="contained">
                     <Link href={event.link} color="default">JOIN</Link>

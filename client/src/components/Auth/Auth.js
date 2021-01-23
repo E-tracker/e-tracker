@@ -5,6 +5,7 @@ import { Avatar,Button,Container, Grid, Paper, Typography } from "@material-ui/c
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {useDispatch} from 'react-redux'
 
+import { AUTH } from '../../constants/actionTypes';
 import { signIn,signUp } from "../../actions/auth";
 
 import Input from './Input'
@@ -26,7 +27,8 @@ const Auth = () => {
     const dispatch = useDispatch()
 
     const switchMode =() => {
-        setIsSignup((prevIsSignup)=>!isSignup)
+        setFormData(initialFormData)
+        setIsSignup((prevIsSignup)=>!prevIsSignup)
         setShowPassword(false)
     }
 
@@ -47,15 +49,13 @@ const Auth = () => {
         const token = await response ?. tokenId
 
         try {
-           dispatch({ type:'AUTH',data:{ result,token } })
+           dispatch({ type:AUTH,data:{ result,token } })
            history.push('/') 
         } catch (error) {
             console.log(error)
         }
     }
-    const googleFailure = (error) => {
-        console.log(error);
-    }    
+    const googleFailure = (error) => alert("Google signin was unsuccessful. Try again Later")   
 
     return (
         <Container component="main" maxWidth="xs">
