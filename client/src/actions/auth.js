@@ -8,7 +8,13 @@ export const signIn = (formData,history) => async(dispatch) => {
         dispatch({type:AUTH,data})
         history.push('/')
     } catch (error) {
-        console.log(error)
+        if(error.response){
+            console.log(error.response);
+        }else if(error.request){
+            console.log(error.request);
+        }else if(error.message){
+            console.log(error.message)
+        }
     }
 }
 export const signUp = (formData,history) => async(dispatch) => {
@@ -17,6 +23,12 @@ export const signUp = (formData,history) => async(dispatch) => {
         dispatch({type:AUTH,data})
         history.push('/')
     } catch (error) {
-        console.log(error)
+        if(error.response){
+            console.log(error.response);
+        }else if(error.request){
+            console.log(error.request);
+        }else if(error.message){
+            console.log(error.message)
+        }
     }
 }
