@@ -5,6 +5,7 @@ import mongoose from 'mongoose'
 export const getEvent = async (req,res) => {
     try {
         const eventModels = await eventModel.find()
+        res.header("Access-Control-Allow-Origin", "*");
         res.status(200).json(eventModels)
     } catch (error) {
         res.status(400).json({ message:error.message })
