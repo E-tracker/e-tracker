@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   confirmPassword: { type: String, required: true },
-  googleId: { type: String },
+  googleId: { type: String }, 
 }); 
 
 export default mongoose.model("User", userSchema);

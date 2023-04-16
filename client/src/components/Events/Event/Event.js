@@ -66,7 +66,7 @@ const Event = ({ event,setCurrentId }) => {
                         <DeleteIcon fontSize="small"/>
                         Delete
                     </Button>
-                )}
+                )} 
             </CardActions>
         </Card>
     )

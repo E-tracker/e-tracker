@@ -10,7 +10,7 @@ import userRoutes from './routes/users.js'
 
 dotenv.config({ path: './config/config.env' })
 
-const app = express()
+const app = express() 
 
 app.use(bodyParser.json({ limit:"30mb",extended:true }))
 app.use(bodyParser.urlencoded({ limit:"30mb",extended:true }))
@@ -28,9 +28,9 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
-    });
+});
 
-app.use('/events',eventRoutes)
+app.use('/events',eventRoutes) 
 app.use('/users',userRoutes) 
 
 const PORT = process.env.PORT 
@@ -40,6 +40,5 @@ const CONNECTION_URL = process.env.CONNECTION_URL
 mongoose.connect(CONNECTION_URL,{ useNewUrlParser:true, useUnifiedTopology:true })
     .then(()=>app.listen(PORT,()=>console.log(`Database connected`)))
     .catch((err)=>console.log(err)) 
-
-mongoose.set('useFindAndModify',false)
  
+mongoose.set('useFindAndModify',false) 
